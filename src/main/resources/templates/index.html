@@ -56,9 +56,10 @@
     </p>
 
 
-    <p>
+    <p class="font-weight-bold">
 
         HOW TO USE THIS API?
+
     </p>
 
 
@@ -67,6 +68,11 @@
         For simplicity we’re going to assume the server is running on localhost:8080.
     </p>
 
+    <p class="font-weight-bold">
+
+        ALL WORDS
+
+    </p>
 
     <p>
         — To view a complete list of all the possible answers go to:
@@ -82,22 +88,35 @@
 
     <p>
 
+
+    <p class="font-weight-bold">
+
+        EXCLUDING LETTERS
+
     </p>
-    — To restrict the list to words which DO NOT contain given letters:
+    <p>
+        — To restrict the list to words which DO NOT contain given letters:
+    </p>
 
 
     <p>
 
+        http://localhost:8080/words/param?exclude={abc}
     </p>
-    http://localhost:8080/words/param?exclude={abc}
 
 
     <p>
 
+        *{abc} can be replaced by any sequence of letters.
     </p>
-    *{abc} can be replaced by any sequence of letters.
 
+    <p class="font-weight-bold">
 
+        INCLUDING LETTERS AT DIFFERENT INDEX
+    <div class="color-yellow"> (YELLOW)</div>
+    LETTERS
+
+    </p>
     <p>
 
         — To restrict the list to words which CONTAIN given letters but not at a specific index (the yellow letters in
@@ -119,7 +138,13 @@
         in the word of the letter highlighted yellow in the game.
     </p>
 
+    <p class="font-weight-bold">
 
+        INCLUDING LETTERS AT SPECIFIC INDEX
+    <div class="color-green"> (GREEN)</div>
+    LETTERS
+
+    </p>
     <p>
 
         — To restrict the list to words which CONTAIN given letters AT a specific index (the greenletters in the game:
@@ -146,6 +171,11 @@
     </p>
 
 
+    <p class="font-weight-bold">
+
+        EXAMPLES
+
+    </p>
     <p>
 
         For example, the call:
@@ -197,7 +227,11 @@
         the letter M at index 1.
     </p>
 
+    <p class="font-weight-bold">
 
+        RESETTING THE DATA
+
+    </p>
     <p>
         If you wish to reset the list of words go to:
     </p>
@@ -210,8 +244,12 @@
 
 
     <p>
+    <p class="font-weight-bold">
 
-        Here is an example of an app which could use such an API:
+        YOUTUBE EXAMPLE
+
+    </p>
+    Here is an example of an app which could use such an API:
     </p>
 
 
