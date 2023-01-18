@@ -30,7 +30,7 @@ public class WordleController {
         wordsBackup = new ArrayList<>();
 
         try {
-            BufferedReader bf = new BufferedReader(new FileReader("src\\main\\resources\\static\\words.txt"));
+            BufferedReader bf = new BufferedReader(new FileReader("words.txt"));
 
             String line = bf.readLine();
 
@@ -46,15 +46,24 @@ public class WordleController {
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            words.add("empty");
         }
 
 
     }
 
-    @GetMapping("")
-    public ArrayList<String> getWords() {
-        return words;
+
+    @GetMapping("/home")
+    public String home() {
+        return "docs";
     }
+
+
+
+//    @GetMapping("")
+//    public ArrayList<String> getWords() {
+//        return words;
+//    }
 
 
     @GetMapping("/reset")

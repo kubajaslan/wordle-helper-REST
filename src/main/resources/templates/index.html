@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+
+<head>
+    <title>
+        Wordle Cracker Docs
+    </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+<div class="px-5 pt-5 pb-5">
+    <h1> Wordle Cracker Docs </h1>
+    <br>
+    <p>
+        This REST api provides a list of possible answers for the Wordle game by taking into account the letters that
+        should
+        be excluded or included at specific indices.
+
+
+    </p>
+    <p>
+        Link to the wordle game:
+
+    </p>
+
+    <p>
+
+        <a href="https://www.nytimes.com/games/wordle/index.html"> https://www.nytimes.com/games/wordle/index.html</a>
+    </p>
+
+
+    <p>
+
+        The app is live at:
+    </p>
+
+
+    <p>
+<a href="        https://wordle-rest-file.lm.r.appspot.com/words
+"?>
+        https://wordle-rest-file.lm.r.appspot.com/words
+</a>
+    </p>
+
+
+    <p>
+
+        HOW TO USE THIS API?
+    </p>
+
+
+    <p>
+
+        For simplicity we’re going to assume the server is running on localhost:8080.
+    </p>
+
+
+    <p>
+        — To view a complete list of all the possible answers go to:
+
+    </p>
+
+
+    <p>
+        http://localhost:8080/words
+
+    </p>
+
+
+    <p>
+
+    </p>
+    — To restrict the list to words which DO NOT contain given letters:
+
+
+    <p>
+
+    </p>
+    http://localhost:8080/words/param?exclude={abc}
+
+
+    <p>
+
+    </p>
+    *{abc} can be replaced by any sequence of letters.
+
+
+    <p>
+
+        — To restrict the list to words which CONTAIN given letters but not at a specific index (the yellow letters in
+        the
+        game:
+    </p>
+
+
+    <p>
+
+        http://localhost:8080/words/param?yellow={1a2b3c}
+    </p>
+
+
+    <p>
+
+        *{1a2b3c} can be replaced by any sequence of digits and letters, keeping in mind that the digit signifies the
+        index
+        in the word of the letter highlighted yellow in the game.
+    </p>
+
+
+    <p>
+
+        — To restrict the list to words which CONTAIN given letters AT a specific index (the greenletters in the game:
+    </p>
+
+
+    <p>
+
+        http://localhost:8080/words/param?green={1a2b3c}
+    </p>
+
+
+    <p>
+
+        *{1a2b3c} can be replaced by any sequence of digits and letters, keeping in mind that the digit signifies the
+        index
+        in the word of the letter highlighted green in the game.
+    </p>
+
+
+    <p>
+
+        All these parameters can be used at the same time with the “&” character inbetween them.
+    </p>
+
+
+    <p>
+
+        For example, the call:
+    </p>
+
+    <p>
+
+        http://localhost:8080/words/param?exclude=abc&yellow=1s&green=5y1m
+    </p>
+
+
+    <p>
+
+        Results in the API returning the list:
+    </p>
+
+
+    <p>
+
+        [
+        "musty",
+        "musky",
+        "missy",
+        "mushy",
+        "mossy"
+        ]
+    </p>
+
+
+    <p>
+        Let us analyse this: the exclude=abc parameter means that none of these words should contain the letter A, B, or
+        C.
+        Indeed, none of them does.
+    </p>
+
+
+    <p>
+
+        Secondly, the parameter “yellow=1s” means that while the word should contain the letter S somewhere, it should
+        not
+        be found at index 1.
+    </p>
+
+
+    <p>
+
+        Lastly, the parameter “green=5y1m” means that the word should contain the letter Y at index 5 and it should
+        contain
+        the letter M at index 1.
+    </p>
+
+
+    <p>
+        If you wish to reset the list of words go to:
+    </p>
+
+
+    <p>
+        http://localhost:8080/words/reset
+
+    </p>
+
+
+    <p>
+
+        Here is an example of an app which could use such an API:
+    </p>
+
+
+    <p>
+
+        https://www.youtube.com/watch?v=iopa70XnrDY&t=11s
+    </p>
+
+</div>
+</body>
+
+</html>
