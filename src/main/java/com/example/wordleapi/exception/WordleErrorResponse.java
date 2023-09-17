@@ -3,8 +3,8 @@ package com.example.wordleapi.exception;
 public class WordleErrorResponse {
 
     private int status;
-private String message;
-private long timestamp;
+    private String message;
+    private long timestamp;
 
     public WordleErrorResponse() {
     }
