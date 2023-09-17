@@ -20,11 +20,6 @@ public class WordleController {
     @Autowired
     private WordleService wordService;
 
-    @PostConstruct
-    public void loadWords() {
-        // Load words from the service or file
-    }
-
     @GetMapping("/home")
     public String home() {
         return "docs";
