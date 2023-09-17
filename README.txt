@@ -28,12 +28,12 @@ http://localhost:8080/words/param?exclude={abc}
 
 —  To restrict the list to words which CONTAIN given letters but not at a specific index (the yellow letters in the game: 
 
-http://localhost:8080/words/param?yellow={1a2b3c}
+http://localhost:8080/words/param?yellow={abc}
 
-*{1a2b3c} can be replaced by any sequence of digits and letters, keeping in mind that the digit signifies the index in the word of the letter highlighted yellow in the game.
+*{abc} can be replaced by any sequence letters, keeping in mind that the digit signifies the index in the word of the letter highlighted yellow in the game.
 
 
-—  To restrict the list to words which CONTAIN given letters AT a specific index (the greenletters in the game: 
+—  To restrict the list to words which CONTAIN given letters AT a specific index (the greenletters in the game:
 
 http://localhost:8080/words/param?green={1a2b3c}
 

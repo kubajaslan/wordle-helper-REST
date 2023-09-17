@@ -87,14 +87,7 @@ public class WordleService {
         List<String> wordsToRemove = new ArrayList<>();
         if (greenLetters != null) {
             greenLetters = greenLetters.toLowerCase();
-            Map<Integer, String> includeMap = new HashMap<>();
-
-
-            for (int i = 0; i < greenLetters.length(); i += 2) {
-                int index = Character.getNumericValue(greenLetters.charAt(i));
-                String letter = String.valueOf(greenLetters.charAt(i + 1));
-                includeMap.put(index, letter);
-            }
+            Map<Integer, String> includeMap = indexAndLetterMap(greenLetters);
 
 
             for (String word : words) {
@@ -111,19 +104,38 @@ public class WordleService {
         }
 
         if (yellowLetters != null) {
+
+            yellowLetters = yellowLetters.toLowerCase();
+
+            Map<Integer, String> includeMap = indexAndLetterMap(yellowLetters);
+
             for (String word : words) {
-                for (char letter : yellowLetters.toCharArray()) {
-                    if (!word.contains(String.valueOf(letter))) {
+                for (Map.Entry<Integer, String> entry : includeMap.entrySet()) {
+                    int index = entry.getKey();
+                    String letter = entry.getValue();
+
+                    if (!word.contains(letter) || (word.contains(letter) && String.valueOf(word.charAt(index - 1))
+                                                                                  .equals(letter))) {
                         wordsToRemove.add(word);
                     }
                 }
             }
-            words.removeAll(wordsToRemove);
         }
 
 
         words.removeAll(wordsToRemove);
         return words;
+    }
+
+    private Map<Integer, String> indexAndLetterMap(String includeParameter) {
+        Map<Integer, String> includeMap = new HashMap<>();
+
+        for (int i = 0; i < includeParameter.length(); i += 2) {
+            int index = Character.getNumericValue(includeParameter.charAt(i));
+            String letter = String.valueOf(includeParameter.charAt(i + 1));
+            includeMap.put(index, letter);
+        }
+        return includeMap;
     }
 
     public List<String> getWords() {
