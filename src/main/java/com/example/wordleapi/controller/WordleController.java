@@ -1,16 +1,11 @@
 package com.example.wordleapi.controller;
 
-import com.example.wordleapi.exception.MalformedRequestParamException;
-import com.example.wordleapi.helper.Writer;
+import com.example.wordleapi.exception.InvalidParameterFormatException;
 import com.example.wordleapi.service.WordleService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -18,7 +13,7 @@ import java.util.*;
 public class WordleController {
 
     @Autowired
-    private WordleService wordService;
+    private WordleService wordleService;
 
     @GetMapping("/home")
     public String home() {
@@ -27,13 +22,13 @@ public class WordleController {
 
     @GetMapping("/reset")
     public List<String> reset() {
-        wordService.resetWords();
-        return wordService.getWords();
+        wordleService.resetWords();
+        return wordleService.getWords();
     }
 
     @GetMapping("/param")
-    public List<String> filterWordsByParams(@RequestParam Map<String, String> params) {
-        return wordService.filterWords(params);
+    public List<String> filterWordsByParams(@RequestParam Map<String, String> params) throws InvalidParameterFormatException {
+        return wordleService.filterWords(params);
     }
 }
 

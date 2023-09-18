@@ -1,18 +1,20 @@
 package com.example.wordleapi.exception;
 
+import java.time.LocalDate;
+
 public class WordleErrorResponse {
 
     private int status;
     private String message;
-    private long timestamp;
+    private LocalDate date;
 
     public WordleErrorResponse() {
     }
 
-    public WordleErrorResponse(int status, String message, long timestamp) {
+    public WordleErrorResponse(int status, String message, LocalDate date) {
         this.status = status;
         this.message = message;
-        this.timestamp = timestamp;
+        this.date = date;
     }
 
     public int getStatus() {
@@ -31,11 +33,11 @@ public class WordleErrorResponse {
         this.message = message;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
