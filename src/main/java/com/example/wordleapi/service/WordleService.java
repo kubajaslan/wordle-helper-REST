@@ -60,10 +60,8 @@ public class WordleService {
         String greenInclude = params.get("green");
 
 
-
-            filteredWords = exclude(filteredWords, excludeString);
-            filteredWords = include(filteredWords, greenInclude, yellowInclude);
-
+        filteredWords = exclude(filteredWords, excludeString);
+        filteredWords = include(filteredWords, greenInclude, yellowInclude);
 
 
         return filteredWords;
@@ -157,7 +155,8 @@ public class WordleService {
 
     private void validateLetterPattern(String letters) throws InvalidParameterFormatException {
         if (letters != null && !letters.matches("([0-9][a-z])+")) {
-            throw new InvalidParameterFormatException("Green and yellow parameter must follow the digit-letter pattern.");
+            throw new InvalidParameterFormatException(
+                    "Green and yellow parameter must follow the digit-letter pattern.");
         }
     }
 
