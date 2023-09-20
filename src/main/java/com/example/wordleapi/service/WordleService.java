@@ -4,56 +4,43 @@ import com.example.wordleapi.exception.InvalidParameterFormatException;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class WordleService {
+    private List<String> words = new ArrayList<>();
+    private String path = "words.txt";
 
-    private List<String> words;
-    private List<String> wordsBackup;
 
-    @PostConstruct
-    public void loadWords() {
-        words = new ArrayList<>();
-        wordsBackup = new ArrayList<>();
+    public List<String> loadWords(String path) {
+        List<String> words = new ArrayList<>();
 
         try {
-            BufferedReader bf = new BufferedReader(new FileReader("words.txt"));
-
-            String line = bf.readLine();
-
-            while (line != null) {
-                words.add(line);
-                wordsBackup.add(line);
-                line = bf.readLine();
-            }
-
-            bf.close();
-
-            System.out.println(words.toString());
+            words = Files.lines(Paths.get(path))
+                         .collect(Collectors.toList());
 
         } catch (IOException e) {
             System.err.println("Error reading the words file: " + e.getMessage());
-            words.add("empty");
         }
-
+        return words;
     }
 
     public void resetWords() {
         words.clear();
-        words.addAll(wordsBackup);
+        words = loadWords(path);
     }
 
     public List<String> filterWords(Map<String, String> params) throws InvalidParameterFormatException {
-        List<String> filteredWords = new ArrayList<>(words);
+        List<String> filteredWords = loadWords(path);
 
         String excludeString = params.get("exclude");
         String yellowInclude = params.get("yellow");
